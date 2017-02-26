@@ -4,16 +4,16 @@ export default Ember.Component.extend({
   classNames: ['list-filter'],
   value: '',
 
-  inti() {
+  init() {
     this._super(...arguments);
-    this.get('filter')('').then((results) => this.set('results', results));
+    this.get('filter')('').then((allResults) => this.set('results', allResults));
   },
 
   actions: {
     handleFilterEntry() {
       let filterInputValue = this.get('value');
       let filterAction = this.get('filter');
-      filterAction(filterInputValue).then((filterResults) => this.set('results', filterResults));
+      filterAction(filterInputValue).then((filteredResults) => this.set('results', filteredResults));
     }
   }
 });
